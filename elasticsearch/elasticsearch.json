@@ -1,34 +1,4 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_PROMETHEUS",
-      "label": "prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    }
-  ],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "5.1.2"
-    },
-    {
-      "type": "panel",
-      "id": "graph",
-      "name": "Graph",
-      "version": "5.0.0"
-    },
-    {
-      "type": "datasource",
-      "id": "prometheus",
-      "name": "Prometheus",
-      "version": "5.0.0"
-    }
-  ],
   "annotations": {
     "list": [
       {
@@ -46,8 +16,8 @@
   "editable": true,
   "gnetId": 3263,
   "graphTooltip": 0,
-  "id": null,
-  "iteration": 1527618173429,
+  "id": 13,
+  "iteration": 1568602404832,
   "links": [],
   "panels": [
     {
@@ -55,9 +25,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 24,
@@ -68,13 +39,13 @@
       "legend": {
         "alignAsTable": true,
         "avg": true,
-        "current": false,
+        "current": true,
         "hideZero": true,
         "max": true,
         "min": false,
         "rightSide": true,
         "show": true,
-        "sideWidth": 250,
+        "sideWidth": 325,
         "total": false,
         "values": true
       },
@@ -82,6 +53,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 1,
       "points": false,
@@ -95,7 +69,7 @@
           "expr": "irate(elasticsearch_indices_flush_time_seconds{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}[5m])",
           "format": "time_series",
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "flush_time",
           "refId": "A",
           "step": 2,
@@ -105,7 +79,7 @@
           "expr": "irate(elasticsearch_indices_get_exists_time_seconds{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}[5m])",
           "format": "time_series",
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "get_exists",
           "refId": "B",
           "step": 2,
@@ -115,7 +89,7 @@
           "expr": "irate(elasticsearch_indices_get_missing_time_seconds{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}[5m])",
           "format": "time_series",
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "get_missing",
           "refId": "C",
           "step": 2,
@@ -125,7 +99,7 @@
           "expr": "irate(elasticsearch_indices_get_time_seconds{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}[5m])",
           "format": "time_series",
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "get (total)",
           "refId": "D",
           "step": 2,
@@ -135,7 +109,7 @@
           "expr": "irate(elasticsearch_indices_indexing_delete_time_seconds_total{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}[5m])",
           "format": "time_series",
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "indexing_delete",
           "refId": "E",
           "step": 2,
@@ -145,7 +119,7 @@
           "expr": "irate(elasticsearch_indices_indexing_index_time_seconds_total{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}[5m])",
           "format": "time_series",
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "indexing_index",
           "refId": "F",
           "step": 2,
@@ -155,7 +129,7 @@
           "expr": "irate(elasticsearch_indices_merges_total_time_seconds_total{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}[5m])",
           "format": "time_series",
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "merges",
           "refId": "G",
           "step": 2,
@@ -165,7 +139,7 @@
           "expr": "irate(elasticsearch_indices_refresh_time_seconds_total{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}[5m])",
           "format": "time_series",
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "refresh",
           "refId": "H",
           "step": 2,
@@ -175,7 +149,7 @@
           "expr": "irate(elasticsearch_indices_search_fetch_time_seconds{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}[5m])",
           "format": "time_series",
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "search_fetch",
           "refId": "I",
           "step": 2,
@@ -185,7 +159,7 @@
           "expr": "irate(elasticsearch_indices_search_query_time_seconds{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}[5m])",
           "format": "time_series",
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "search_query",
           "refId": "J",
           "step": 2,
@@ -195,7 +169,7 @@
           "expr": "irate(elasticsearch_indices_store_throttle_time_seconds_total{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}[5m])",
           "format": "time_series",
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "store_throttle",
           "refId": "K",
           "step": 2,
@@ -204,6 +178,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "time",
       "tooltip": {
@@ -247,9 +222,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
       "decimals": 0,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 24,
@@ -260,13 +236,13 @@
       "legend": {
         "alignAsTable": true,
         "avg": false,
-        "current": false,
+        "current": true,
         "hideZero": true,
         "max": true,
         "min": false,
         "rightSide": true,
         "show": true,
-        "sideWidth": 250,
+        "sideWidth": 325,
         "total": true,
         "values": true
       },
@@ -274,6 +250,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -288,7 +267,7 @@
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "flush_total",
           "refId": "B",
           "step": 2,
@@ -299,7 +278,7 @@
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "get_exists",
           "refId": "A",
           "step": 2,
@@ -310,7 +289,7 @@
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "get_missing",
           "refId": "C",
           "step": 2,
@@ -321,7 +300,7 @@
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "get (total)",
           "refId": "D",
           "step": 2,
@@ -332,7 +311,7 @@
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "indexing_delete",
           "refId": "F",
           "step": 2,
@@ -343,7 +322,7 @@
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "indexing_index",
           "refId": "E",
           "step": 2,
@@ -354,7 +333,7 @@
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "merges_docs",
           "refId": "G",
           "step": 2,
@@ -365,7 +344,7 @@
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "merges",
           "refId": "H",
           "step": 2,
@@ -376,7 +355,7 @@
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "refresh",
           "refId": "J",
           "step": 2,
@@ -387,7 +366,7 @@
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "search_fetch",
           "refId": "I",
           "step": 2,
@@ -398,7 +377,7 @@
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "search_query",
           "refId": "K",
           "step": 2,
@@ -409,7 +388,7 @@
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "translog",
           "refId": "L",
           "step": 2,
@@ -418,6 +397,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "count",
       "tooltip": {
@@ -461,9 +441,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 24,
@@ -473,7 +454,7 @@
       "id": 22,
       "legend": {
         "alignAsTable": true,
-        "avg": false,
+        "avg": true,
         "current": true,
         "hideEmpty": false,
         "hideZero": true,
@@ -481,7 +462,7 @@
         "min": false,
         "rightSide": true,
         "show": true,
-        "sideWidth": 250,
+        "sideWidth": 325,
         "total": false,
         "values": true
       },
@@ -489,6 +470,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -499,24 +483,24 @@
       "steppedLine": false,
       "targets": [
         {
-          "expr": "elasticsearch_indices_fielddata_memory_size_bytes{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}",
-          "format": "time_series",
-          "hide": false,
-          "interval": "",
-          "intervalFactor": 2,
-          "legendFormat": "fielddata",
-          "refId": "B",
-          "step": 2,
-          "target": ""
-        },
-        {
           "expr": "elasticsearch_indices_filter_cache_memory_size_bytes{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "filter_cache",
           "refId": "A",
+          "step": 2,
+          "target": ""
+        },
+        {
+          "expr": "elasticsearch_indices_fielddata_memory_size_bytes{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}",
+          "format": "time_series",
+          "hide": false,
+          "interval": "",
+          "intervalFactor": 1,
+          "legendFormat": "fielddata",
+          "refId": "B",
           "step": 2,
           "target": ""
         },
@@ -525,7 +509,7 @@
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "query_cache",
           "refId": "C",
           "step": 2,
@@ -536,7 +520,7 @@
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "request_cache",
           "refId": "D",
           "step": 2,
@@ -547,7 +531,7 @@
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "segments",
           "refId": "E",
           "step": 2,
@@ -558,7 +542,7 @@
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "translog",
           "refId": "F",
           "step": 2,
@@ -567,6 +551,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "memory_size",
       "tooltip": {
@@ -610,9 +595,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 24,
@@ -622,13 +608,13 @@
       "id": 20,
       "legend": {
         "alignAsTable": true,
-        "avg": false,
+        "avg": true,
         "current": true,
         "max": true,
         "min": false,
         "rightSide": true,
         "show": true,
-        "sideWidth": 250,
+        "sideWidth": 325,
         "total": false,
         "values": true
       },
@@ -636,6 +622,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -650,7 +639,7 @@
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "total",
           "refId": "B",
           "step": 2,
@@ -661,7 +650,7 @@
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "deleted",
           "refId": "A",
           "step": 2,
@@ -670,6 +659,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "docs",
       "tooltip": {
@@ -713,9 +703,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
       "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 24,
@@ -725,13 +716,13 @@
       "id": 28,
       "legend": {
         "alignAsTable": true,
-        "avg": false,
+        "avg": true,
         "current": true,
         "max": true,
         "min": false,
         "rightSide": true,
         "show": true,
-        "sideWidth": 250,
+        "sideWidth": 325,
         "total": false,
         "values": true
       },
@@ -739,6 +730,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -753,7 +747,7 @@
           "format": "time_series",
           "hide": false,
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "store_size",
           "refId": "A",
           "step": 2,
@@ -762,6 +756,7 @@
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "store_size",
       "tooltip": {
@@ -805,8 +800,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
+      "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 24,
@@ -817,12 +814,12 @@
       "legend": {
         "alignAsTable": true,
         "avg": true,
-        "current": false,
+        "current": true,
         "max": true,
         "min": false,
         "rightSide": true,
         "show": true,
-        "sideWidth": 250,
+        "sideWidth": 325,
         "total": false,
         "values": true
       },
@@ -830,6 +827,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -842,13 +842,14 @@
         {
           "expr": "elasticsearch_process_cpu_percent{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}",
           "format": "time_series",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "cpu",
           "refId": "A"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "cpu_percent",
       "tooltip": {
@@ -892,8 +893,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
+      "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 24,
@@ -904,12 +907,12 @@
       "legend": {
         "alignAsTable": true,
         "avg": true,
-        "current": false,
+        "current": true,
         "max": true,
         "min": false,
         "rightSide": true,
         "show": true,
-        "sideWidth": 250,
+        "sideWidth": 325,
         "total": false,
         "values": true
       },
@@ -917,6 +920,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -930,13 +936,14 @@
           "expr": "irate(elasticsearch_process_cpu_time_seconds_sum{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}[5m])",
           "format": "time_series",
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "{{type}}",
           "refId": "A"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "cpu_time",
       "tooltip": {
@@ -980,9 +987,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
       "decimals": 0,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 24,
@@ -993,12 +1001,12 @@
       "legend": {
         "alignAsTable": true,
         "avg": true,
-        "current": false,
+        "current": true,
         "max": true,
         "min": false,
         "rightSide": true,
         "show": true,
-        "sideWidth": 250,
+        "sideWidth": 325,
         "total": false,
         "values": true
       },
@@ -1006,6 +1014,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1018,13 +1029,14 @@
         {
           "expr": "elasticsearch_process_open_files_count{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}",
           "format": "time_series",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "open files",
           "refId": "A"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "open_files",
       "tooltip": {
@@ -1068,9 +1080,10 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
-      "decimals": 0,
+      "datasource": "prometheus",
+      "decimals": 1,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 24,
@@ -1081,12 +1094,12 @@
       "legend": {
         "alignAsTable": true,
         "avg": true,
-        "current": false,
+        "current": true,
         "max": true,
         "min": false,
         "rightSide": true,
         "show": true,
-        "sideWidth": 250,
+        "sideWidth": 325,
         "total": false,
         "values": true
       },
@@ -1094,6 +1107,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1107,7 +1123,7 @@
           "expr": "elasticsearch_jvm_memory_max_bytes{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}",
           "format": "time_series",
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "max",
           "refId": "B"
         },
@@ -1115,13 +1131,14 @@
           "expr": "elasticsearch_jvm_memory_used_bytes{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}",
           "format": "time_series",
           "interval": "",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "{{area}}",
           "refId": "C"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "jvm_memory",
       "tooltip": {
@@ -1165,11 +1182,12 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
-      "decimals": null,
+      "datasource": "prometheus",
+      "decimals": 0,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
-        "h": 5,
+        "h": 9,
         "w": 24,
         "x": 0,
         "y": 45
@@ -1177,7 +1195,7 @@
       "id": 33,
       "legend": {
         "alignAsTable": true,
-        "avg": false,
+        "avg": true,
         "current": true,
         "hideEmpty": false,
         "hideZero": true,
@@ -1185,7 +1203,7 @@
         "min": false,
         "rightSide": true,
         "show": true,
-        "sideWidth": 250,
+        "sideWidth": 325,
         "total": false,
         "values": true
       },
@@ -1193,6 +1211,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1205,13 +1226,14 @@
         {
           "expr": "elasticsearch_thread_pool_threads_count{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}",
           "format": "time_series",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "{{type}}",
           "refId": "A"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "threadpool - threads",
       "tooltip": {
@@ -1255,26 +1277,27 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
       "decimals": 0,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 24,
         "x": 0,
-        "y": 50
+        "y": 54
       },
       "id": 36,
       "legend": {
         "alignAsTable": true,
-        "avg": false,
+        "avg": true,
         "current": true,
         "hideZero": true,
         "max": true,
         "min": false,
         "rightSide": true,
         "show": true,
-        "sideWidth": 250,
+        "sideWidth": 325,
         "total": false,
         "values": true
       },
@@ -1282,6 +1305,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1294,13 +1320,14 @@
         {
           "expr": "elasticsearch_thread_pool_active_count{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}",
           "format": "time_series",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "{{type}}",
           "refId": "A"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "threadpool - active",
       "tooltip": {
@@ -1344,26 +1371,27 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
       "decimals": 0,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 24,
         "x": 0,
-        "y": 55
+        "y": 59
       },
       "id": 37,
       "legend": {
         "alignAsTable": true,
-        "avg": false,
+        "avg": true,
         "current": true,
         "hideZero": true,
         "max": true,
         "min": false,
         "rightSide": true,
         "show": true,
-        "sideWidth": 250,
+        "sideWidth": 325,
         "total": false,
         "values": true
       },
@@ -1371,6 +1399,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1383,13 +1414,14 @@
         {
           "expr": "elasticsearch_thread_pool_queue_count{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}",
           "format": "time_series",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "{{type}}",
           "refId": "A"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "threadpool - queue",
       "tooltip": {
@@ -1433,26 +1465,27 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
       "decimals": null,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 24,
         "x": 0,
-        "y": 60
+        "y": 64
       },
       "id": 34,
       "legend": {
         "alignAsTable": true,
-        "avg": false,
+        "avg": true,
         "current": true,
         "hideZero": true,
         "max": true,
         "min": false,
         "rightSide": true,
         "show": true,
-        "sideWidth": 250,
+        "sideWidth": 325,
         "total": false,
         "values": true
       },
@@ -1460,6 +1493,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1472,13 +1508,14 @@
         {
           "expr": "irate(elasticsearch_thread_pool_rejected_count{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}[5m])",
           "format": "time_series",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "{{type}}",
           "refId": "A"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "threadpool - rejected",
       "tooltip": {
@@ -1522,26 +1559,27 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "prometheus",
       "decimals": 0,
       "fill": 1,
+      "fillGradient": 0,
       "gridPos": {
         "h": 5,
         "w": 24,
         "x": 0,
-        "y": 65
+        "y": 69
       },
       "id": 35,
       "legend": {
         "alignAsTable": true,
-        "avg": false,
-        "current": false,
+        "avg": true,
+        "current": true,
         "hideZero": true,
         "max": true,
         "min": false,
         "rightSide": true,
         "show": true,
-        "sideWidth": 250,
+        "sideWidth": 325,
         "total": true,
         "values": true
       },
@@ -1549,6 +1587,9 @@
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
+      "options": {
+        "dataLinks": []
+      },
       "percentage": false,
       "pointradius": 5,
       "points": false,
@@ -1561,13 +1602,14 @@
         {
           "expr": "irate(elasticsearch_thread_pool_completed_count{job=\"elasticsearch\",cluster=~\"$cluster\",name=~\"$name\"}[5m])",
           "format": "time_series",
-          "intervalFactor": 2,
+          "intervalFactor": 1,
           "legendFormat": "{{type}}",
           "refId": "A"
         }
       ],
       "thresholds": [],
       "timeFrom": null,
+      "timeRegions": [],
       "timeShift": null,
       "title": "threadpool - completed",
       "tooltip": {
@@ -1607,16 +1649,20 @@
       }
     }
   ],
-  "refresh": "5m",
-  "schemaVersion": 16,
+  "refresh": "10s",
+  "schemaVersion": 19,
   "style": "dark",
   "tags": [],
   "templating": {
     "list": [
       {
         "allValue": null,
-        "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "current": {
+          "text": "esc",
+          "value": "esc"
+        },
+        "datasource": "prometheus",
+        "definition": "",
         "hide": 0,
         "includeAll": false,
         "label": null,
@@ -1626,6 +1672,7 @@
         "query": "label_values(elasticsearch_indices_docs{job=\"elasticsearch\"}, cluster)",
         "refresh": 2,
         "regex": "/([^:]+)/",
+        "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
         "tags": [],
@@ -1635,8 +1682,12 @@
       },
       {
         "allValue": null,
-        "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "current": {
+          "text": "esc",
+          "value": "esc"
+        },
+        "datasource": "prometheus",
+        "definition": "",
         "hide": 0,
         "includeAll": false,
         "label": null,
@@ -1646,6 +1697,7 @@
         "query": "label_values(elasticsearch_indices_docs{job=\"elasticsearch\",cluster=\"$cluster\"}, name)",
         "refresh": 2,
         "regex": "/([^:]+)/",
+        "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
         "tags": [],
@@ -1655,8 +1707,12 @@
       },
       {
         "allValue": null,
-        "current": {},
-        "datasource": "${DS_PROMETHEUS}",
+        "current": {
+          "text": "es",
+          "value": "es"
+        },
+        "datasource": "prometheus",
+        "definition": "",
         "hide": 2,
         "includeAll": false,
         "label": null,
@@ -1666,6 +1722,7 @@
         "query": "label_values(elasticsearch_filesystem_data_size_bytes{job=\"elasticsearch\"}, instance)",
         "refresh": 2,
         "regex": "/([^:]+):.*/",
+        "skipUrlSync": false,
         "sort": 1,
         "tagValuesQuery": "",
         "tags": [],
@@ -1676,7 +1733,7 @@
     ]
   },
   "time": {
-    "from": "now-3h",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {
@@ -1706,6 +1763,6 @@
   },
   "timezone": "browser",
   "title": "elasticsearch",
-  "uid": "000000006",
-  "version": 2
+  "uid": "iPFhBccZk",
+  "version": 8
 }
